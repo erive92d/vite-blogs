@@ -29,10 +29,10 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { content, image }, context) => {
+    addPost: async (parent, { title, content, image }, context) => {
       if (context.user) {
         console.log(context.user);
-        const newPost = await Post.create({ content, image });
+        const newPost = await Post.create({ title, content, image });
         console.log(newPost);
 
         await User.findOneAndUpdate(

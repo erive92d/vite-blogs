@@ -1,14 +1,71 @@
 import './App.css'
-import Nav from './components/Navigation'
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Nav from './components/Navigation/Navigation'
+import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:3001/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 
 function App() {
 
   return (
-    <div>
-      <Nav/>
-      <h1>Hello</h1>
-      
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Nav/>
+          <div className="container">
+            <Routes>
+              <Route 
+                path="/" 
+                element={<Home />} 
+              />
+              <Route 
+                path="/login" 
+                element={<Login />} 
+              />
+              {/* <Route 
+                path="/signup" 
+                element={<Signup />} 
+              /> */}
+              {/* <Route 
+                path="/posts/:postId" 
+                element={<SinglePost />} 
+              /> */}
+            </Routes>
+          </div>
+        
+        </div>
+      </Router>
+    </ApolloProvider>
   )
 }
 
