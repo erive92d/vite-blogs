@@ -6,6 +6,28 @@ export const QUERY_USERS = gql`
       _id
       name
       email
+      profilePic
+      posts {
+        title
+        content
+        createdAt
+      }
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      name
+      profilePic
+      email
+      posts {
+        title
+        content
+        createdAt
+      }
     }
   }
 `;
@@ -16,6 +38,7 @@ export const QUERY_USER = gql`
       _id
       name
       email
+      profilePic
       posts {
         title
         content

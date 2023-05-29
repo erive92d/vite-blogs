@@ -13,17 +13,28 @@ export const LOGIN_USER = gql`
   }
 `;
 
-// export const ADD_USER = gql`
-//   mutation addUser($username: String!, $email: String!, $password: String!) {
-//     addUser(username: $username, email: $email, password: $password) {
-//       token
-//       user {
-//         _id
-//         username
-//       }
-//     }
-//   }
-// `;
+export const ADD_USER = gql`
+  mutation addUser(
+    $name: String!
+    $email: String!
+    $password: String!
+    $profilePic: String!
+  ) {
+    addUser(
+      name: $name
+      email: $email
+      password: $password
+      profilePic: $profilePic
+    ) {
+      token
+      user {
+        _id
+        name
+        profilePic
+      }
+    }
+  }
+`;
 
 // export const ADD_POST = gql`
 //   mutation addPost($title: String!, $content: String!, $image: String!) {

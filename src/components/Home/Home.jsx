@@ -7,6 +7,8 @@ export default function Home() {
 
   const {data, loading} = useQuery(QUERY_USERS)
   const users = data?.users || []
+
+  
   console.log(users)
   return (
     <div>
