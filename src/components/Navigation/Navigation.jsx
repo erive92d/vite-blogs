@@ -9,11 +9,11 @@ const Nav = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  if(auth.loggedIn()) {
+  if (auth.loggedIn()) {
     console.log(auth.getProfile())
   }
 
- 
+
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,10 +27,10 @@ const Nav = () => {
             <div className="ml-4 flex items-center space-x-4">
               <a href="/" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
               <a href="/about" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">About</a>
-              <a href="/contact" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-              {auth.loggedIn() ?  <a href="/" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium" onClick={() => auth.logout()}>Log Out</a>
-:               <a href="/login" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Log In</a>
-}
+              {/* <a href="/contact" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Contact</a> */}
+              {auth.loggedIn() ? <a href="/" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium" onClick={() => auth.logout()}>Log Out</a>
+                : <a href="/login" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Log In</a>
+              }
 
             </div>
           </div>
@@ -70,8 +70,9 @@ const Nav = () => {
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a href="/" className="text-gray-300 hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
           <a href="/about" className="text-gray-300 hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
-          <a href="/contact" className="text-gray-300 hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-        </div>
+          {auth.loggedIn() ? <a href="/" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium" onClick={() => auth.logout()}>Log Out</a>
+            : <a href="/login" className="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Log In</a>
+          }        </div>
       </div>
     </nav>
   );

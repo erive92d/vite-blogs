@@ -41,16 +41,16 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Nav/>
+          <Nav />
           <div className="container">
             <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
+              <Route
+                path="/"
+                element={<Home />}
               />
-              <Route 
-                path="/login" 
-                element={<Login />} 
+              <Route
+                path="/login"
+                element={<Login />}
               />
               {/* <Route 
                 path="/signup" 
@@ -62,7 +62,7 @@ function App() {
               /> */}
             </Routes>
           </div>
-        
+
         </div>
       </Router>
     </ApolloProvider>
