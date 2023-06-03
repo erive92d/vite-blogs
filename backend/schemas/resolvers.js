@@ -23,16 +23,17 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { password, name, email }) => {
-      const user = await User.create({ name, password, email });
+    addUser: async (parent, { password, name, email, profilePic }) => {
+      const user = await User.create({ name, password, email, profilePic });
 
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { title, content, image }, context) => {
+    addPost: async (parent, { title, content, image, postAuthor }, context) => {
       if (context.user) {
         console.log(context.user);
-        const newPost = await Post.create({ title, content, image });
+
+        const newPost = await Post.create({ title, content, image, postAuthor: context.user.email });
         console.log(newPost);
 
         await User.findOneAndUpdate(
@@ -40,7 +41,7 @@ const resolvers = {
           { $addToSet: { posts: newPost._id } }
         );
 
-        return User;
+        return Post;
       }
       throw new AuthenticationError("You need to be logged in!");
     },

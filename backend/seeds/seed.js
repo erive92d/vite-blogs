@@ -14,6 +14,8 @@ connection.once("open", async () => {
     await User.deleteMany({});
 
     await User.create(userData);
+
+
   } catch (err) {
     console.error(err);
     process.exit(1);

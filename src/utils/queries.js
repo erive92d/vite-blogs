@@ -6,6 +6,30 @@ export const QUERY_USERS = gql`
       _id
       name
       email
+      profilePic
+      posts {
+        title
+        content
+        createdAt
+        postAuthor
+      }
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      name
+      profilePic
+      email
+      posts {
+        title
+        content
+        createdAt
+        postAuthor
+      }
     }
   }
 `;
@@ -16,25 +40,29 @@ export const QUERY_USER = gql`
       _id
       name
       email
+      profilePic
       posts {
         title
         content
         createdAt
+        postAuthor
       }
     }
   }
 `;
 
-// export const QUERY_THOUGHTS = gql`
-//   query getThoughts {
-//     thoughts {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//     }
-//   }
-// `;
+export const QUERY_POSTS = gql`
+  query posts {
+    posts {
+      _id
+      content
+      title
+      createdAt
+      postAuthor
+      image
+    }
+  }
+`;
 
 // export const QUERY_SINGLE_THOUGHT = gql`
 //   query getSingleThought($thoughtId: ID!) {

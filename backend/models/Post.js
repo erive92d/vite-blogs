@@ -27,12 +27,12 @@ const postSchema = new Schema({
       },
     },
   ],
-  //edited postAuthor
-  // postAuthor: {
-  //   type: String,
-  //   required: true,
-  //   trim: true,
-  // },
+  // edited postAuthor
+  postAuthor: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   image: {
     data: Buffer,
     type: String,
