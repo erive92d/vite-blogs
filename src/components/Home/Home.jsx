@@ -12,7 +12,6 @@ export default function Home() {
   const users = data?.users || []
 
 
-  console.log(users)
   return (
     <div className='border p-4 text-lg'>
       <h1 className='font-bold text-4xl'>

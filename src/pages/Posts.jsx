@@ -8,6 +8,7 @@ import { QUERY_POSTS } from "../utils/queries"
 export default function Posts() {
     const { data, loading } = useQuery(QUERY_POSTS)
     const posts = data?.posts || []
+
     console.log(posts)
 
     if (loading) {
@@ -15,10 +16,7 @@ export default function Posts() {
     }
     return (
         <div>
-
-
             <DisplayPosts posts={posts} />
-
         </div>
     )
 }

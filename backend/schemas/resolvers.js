@@ -24,9 +24,7 @@ const resolvers = {
       return postDetail
     },
     me: async (parent, args, context) => {
-      console.log(context);
       if (context.user) {
-        console.log(context.user);
         return User.findOne({ _id: context.user._id }).populate("posts");
       }
       throw new AuthenticationError("You need to be logged in!");
@@ -42,9 +40,8 @@ const resolvers = {
     },
     addPost: async (parent, { title, content, image, postAuthor }, context) => {
       if (context.user) {
-        console.log(context.user);
 
-        const newPost = await Post.create({ title, content, image, postAuthor: context.user.email });
+        const newPost = await Post.create({ title, content, image, postAuthor: context.user.name });
         console.log(newPost);
 
         await User.findOneAndUpdate(
