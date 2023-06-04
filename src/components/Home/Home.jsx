@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client'
 import { QUERY_USERS } from '../../utils/queries'
 import Posts from '../../pages/Profile/Posts'
 import CreatePost from '../CreatePost/CreatePost'
+import auth from '../../utils/auth'
 
 
 export default function Home() {
@@ -13,12 +14,13 @@ export default function Home() {
 
   console.log(users)
   return (
-    <div className='border p-2 mx-auto'>
-      <h1>
-        This is Home page!
+    <div className='border p-4 text-lg'>
+      <h1 className='font-bold text-4xl'>
+        What the Blogs...?
 
       </h1>
-      <CreatePost />
+      {auth.loggedIn() && <CreatePost />
+      }
       <Posts />
     </div>
   )

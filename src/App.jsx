@@ -44,7 +44,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Nav />
-          <div className="container">
+          <div className="container mx-auto">
             <Routes>
               <Route
                 path="/"
@@ -54,13 +54,13 @@ function App() {
                 path="/login"
                 element={<Login />}
               />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
+              <Route
+                path="/signup"
+                element={<Signup />}
               />
-              <Route 
-                path="/me" 
-                element={<Profile />} 
+              <Route
+                path="/me"
+                element={<Profile />}
               />
               {/* <Route 
                 path="/posts/:postId" 
