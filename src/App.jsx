@@ -13,6 +13,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Profile from './pages/Profile/Profile';
+import SinglePost from './pages/SinglePost';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -62,10 +63,10 @@ function App() {
                 path="/me"
                 element={<Profile />}
               />
-              {/* <Route 
-                path="/posts/:postId" 
-                element={<SinglePost />} 
-              /> */}
+              <Route
+                path="/posts/:postId"
+                element={<SinglePost />}
+              />
             </Routes>
           </div>
 

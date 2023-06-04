@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { QUERY_USERS } from '../../utils/queries'
-import Posts from '../../pages/Profile/Posts'
+import Posts from '../../pages/Posts'
 import CreatePost from '../CreatePost/CreatePost'
 import auth from '../../utils/auth'
 

@@ -64,17 +64,14 @@ export const QUERY_POSTS = gql`
   }
 `;
 
-// export const QUERY_SINGLE_THOUGHT = gql`
-//   query getSingleThought($thoughtId: ID!) {
-//     thought(thoughtId: $thoughtId) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//         createdAt
-//       }
-//     }
-//   }
+export const QUERY_SINGLE_POST = gql`
+  query post($postId: ID!) {
+    post(postId: $postId) {
+      _id
+      title
+      content
+      createdAt
+      postAuthor
+      
+    }
+  }`

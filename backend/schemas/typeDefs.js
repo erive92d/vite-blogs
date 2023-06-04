@@ -38,8 +38,10 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    user(userId: ID!): User
     me: User
     posts: [Post]
+    post(postId: ID!): Post
   }
 
   type Mutation {

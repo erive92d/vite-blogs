@@ -8,9 +8,20 @@ const resolvers = {
       // Populate the classes and professor subdocuments when querying for schools
       return User.find({}).populate("posts");
     },
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId }).populate("posts")
+    },
     posts: async () => {
       // Populate the professor subdocument when querying for classes
       return Post.find();
+    },
+    post: async (parent, { postId }) => {
+      const postDetail = Post.findOne(
+        {
+          _id: postId
+        }
+      )
+      return postDetail
     },
     me: async (parent, args, context) => {
       console.log(context);
