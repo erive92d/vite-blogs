@@ -71,6 +71,15 @@ export default function FormPost() {
 
     }
 
+    //Image
+    const onChange = (imageList, addUpdateIndex) => {
+        // data for submit
+        console.log(imageList);
+        // setImages(imageList);
+        setInput({ ...input, image: imageList[0].data_url })
+
+    };
+
     return (
         <form className="space-y-6">
 
@@ -109,6 +118,9 @@ export default function FormPost() {
                     type="text"
                     placeholder="body..."
                 />
+            </div>
+            <div>
+                <ImageUpload onChange={onChange} />
             </div>
 
             <div className="w-full">

@@ -16,76 +16,59 @@ const Nav = () => {
     <Navbar
       fluid
       rounded
+      className="w-100"
     >
       <Navbar.Brand href="/">
 
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Blogs
+          Tech Blogs
         </span>
       </Navbar.Brand>
 
+      <div className="flex">
+        {auth.loggedIn() &&
+          <Dropdown
+            inline
+            label={<Avatar alt="User settings" img={userData.profilePic || "https://flowbite.com/docs/images/people/profile-picture-5.jpg"} rounded />}
+          >
+            <Dropdown.Header>
 
+              <span className="block text-sm">
+                {userData?.name}
+              </span>
+              <span className="block truncate text-sm font-medium">
+                {userData?.email}
+              </span>
+            </Dropdown.Header>
+            <Dropdown.Item>
+              <a href="/me">
+                Profile
+              </a>
+            </Dropdown.Item>
 
+            <Dropdown.Divider />
+            <Dropdown.Item >
+              <a href="/" onClick={() => auth.logout()}>
+                Sign out
 
-      <div className="flex md:order-2">
-        {auth.loggedIn() && <Dropdown
-          inline
-          label={<Avatar alt="User settings" img={userData.profilePic || "https://flowbite.com/docs/images/people/profile-picture-5.jpg"} rounded />}
-        >
+              </a>
 
-
-          <Dropdown.Header>
-
-            <span className="block text-sm">
-              {userData?.name}
-            </span>
-            <span className="block truncate text-sm font-medium">
-              {userData?.email}
-            </span>
-          </Dropdown.Header>
-          <Dropdown.Item>
-            <a href="/me">
-              Profile
-            </a>
-          </Dropdown.Item>
-
-          <Dropdown.Divider />
-          <Dropdown.Item >
-            <a href="/" onClick={() => auth.logout()}>
-              Sign out
-
-            </a>
-
-          </Dropdown.Item>
-        </Dropdown>}
+            </Dropdown.Item>
+          </Dropdown>}
 
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link
-          active
-          href="#"
-        >
-          <p>
-            Home
-          </p>
-        </Navbar.Link>
-
-
 
         {auth.loggedIn() ?
-          (
-            <Navbar.Link href="/" onClick={() => auth.logout()}>
-              Logout
-            </Navbar.Link>
-          )
+          null
           :
           (
             <>
               <Navbar.Link href="/login">
                 Login
               </Navbar.Link>
-              <a href="/signup" className=" hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Sign up</a>
+              <Navbar.Link href="/signup" className=" hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Sign up</Navbar.Link>
 
 
             </>

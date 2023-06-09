@@ -13,11 +13,9 @@ export default function Home() {
 
 
   return (
-    <div className='border p-4 text-lg'>
-      <h1 className='font-bold text-4xl'>
-        What the Blogs...?
+    <div className='border w-100 text-lg'>
+      <img style={{ width: "100%", height: "70vh" }} src='./homebg.jpg'></img>
 
-      </h1>
       {auth.loggedIn() && <CreatePost />
       }
       <Posts />

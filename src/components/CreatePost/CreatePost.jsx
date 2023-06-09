@@ -8,16 +8,6 @@ import FormPost from "./FormPost";
 export default function CreatePost() {
     const [modal, setModal] = useState(false)
 
-    const onChange = (imageList, addUpdateIndex) => {
-        // data for submit
-        console.log(imageList);
-        // setImages(imageList);
-        setInput({ ...input, image: imageList[0].data_url })
-
-    };
-
-
-
 
     return (
         <div>

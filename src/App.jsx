@@ -42,35 +42,37 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <Nav />
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Nav />
-          <div className="container mx-auto">
-            <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/me"
-                element={<Profile />}
-              />
-              <Route
-                path="/posts/:postId"
-                element={<SinglePost />}
-              />
-            </Routes>
-          </div>
 
+
+        <div className="container mx-auto">
+
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+            <Route
+              path="/signup"
+              element={<Signup />}
+            />
+            <Route
+              path="/me"
+              element={<Profile />}
+            />
+            <Route
+              path="/posts/:postId"
+              element={<SinglePost />}
+            />
+          </Routes>
         </div>
+
+
       </Router>
     </ApolloProvider>
   )
