@@ -14,12 +14,15 @@ export default function Home() {
 
 
   return (
-    <div className='border flex text-lg'>
-      <Sidebar />
-      {/* <img style={{ width: "100%", height: "60vh" }} src='./homebg.jpg'></img> */}
+    <div className='border flex text-lg relative'>
+      <div className='border w-1/3'>
+        {auth.loggedIn() && <CreatePost />
+        }
+        <Sidebar />
+      </div>
 
-      {auth.loggedIn() && <CreatePost />
-      }
+
+
       <Posts />
     </div>
   )

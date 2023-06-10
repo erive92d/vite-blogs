@@ -4,7 +4,7 @@ import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, Hi
 
 export default function DefaultSideBar() {
     return (
-        <Sidebar aria-label="Default sidebar example">
+        <Sidebar >
             <Sidebar.Items>
                 <Sidebar.ItemGroup>
                     <Sidebar.Item
@@ -15,16 +15,7 @@ export default function DefaultSideBar() {
                             Dashboard
                         </p>
                     </Sidebar.Item>
-                    <Sidebar.Item
-                        href="#"
-                        icon={HiViewBoards}
-                        label="Pro"
-                        labelColor="dark"
-                    >
-                        <p>
-                            Kanban
-                        </p>
-                    </Sidebar.Item>
+
                     <Sidebar.Item
                         href="#"
                         icon={HiInbox}
