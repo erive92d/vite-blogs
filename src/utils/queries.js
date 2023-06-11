@@ -8,6 +8,7 @@ export const QUERY_USERS = gql`
       email
       profilePic
       posts {
+        _id
         title
         content
         createdAt
@@ -44,6 +45,7 @@ export const QUERY_USER = gql`
       email
       profilePic
       posts {
+
         title
         content
         createdAt

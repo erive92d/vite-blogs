@@ -24,7 +24,7 @@ export default function DisplayPosts({ posts }) {
                                         return (
                                             <div className="my-2">
                                                 <div class="px-6 py-4">
-                                                    <div class="font-bold text-xl mb-2"> <Link to={`/posts/${post._id}`}>
+                                                    <div class="font-bold text-xl mb-2"> <Link to={`/posts/${item._id}`}>
                                                         {item.title}
                                                     </Link></div>
                                                     <p class="text-gray-700 text-base">
