@@ -15,11 +15,12 @@ export default function Home() {
 
   return (
     <div className='border flex text-lg relative'>
-      <div className='border w-1/3'>
-        {auth.loggedIn() && <CreatePost />
-        }
+      {auth.loggedIn() && <div className='border w-1/3 p-2'>
+        <CreatePost />
+
         <Sidebar />
-      </div>
+      </div>}
+
 
 
 

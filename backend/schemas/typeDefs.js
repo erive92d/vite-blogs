@@ -20,6 +20,8 @@ const typeDefs = gql`
     likes: [Like]
   }
 
+
+
   type Like {
     name: String
     userId: String

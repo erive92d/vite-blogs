@@ -61,11 +61,11 @@ const Nav = () => {
       </div>
       <Navbar.Collapse>
 
-
-        <Navbar.Link href="/login">
+        {auth.loggedIn() ? null : <><Navbar.Link href="/login">
           Login
         </Navbar.Link>
-        <Navbar.Link href="/signup" className=" hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Sign up</Navbar.Link>
+          <Navbar.Link href="/signup" className=" hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Sign up</Navbar.Link></>}
+
 
 
 

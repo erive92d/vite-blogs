@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require('cors');
+
 // Import the ApolloServer class
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
@@ -17,6 +19,14 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false, limit: "1000mb" }));
 app.use(express.json({ limit: "1000mb" }));
+app.use(cors());
+
+// app.use(
+//   cors({
+//     origin: ['http://localhost:5173'],
+//     optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+//   })
+// );
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
