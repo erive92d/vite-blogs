@@ -123,6 +123,7 @@ export default function FormPost() {
                 <ImageUpload onChange={onChange} />
             </div> */}
 
+
             <div className="w-full">
                 <Button onClick={handleSubmit} type="submit">
                     Post it!

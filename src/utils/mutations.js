@@ -37,7 +37,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($title: String!, $content: String!, $image: String, $postAuthor: String) {
+  mutation addPost($title: String!, $content: String!, $image: String,  $postAuthor: String) {
     addPost(title: $title, content: $content, image: $image, postAuthor: $postAuthor) {
       _id
       title
@@ -45,6 +45,7 @@ export const ADD_POST = gql`
       content
       image
       createdAt
+
       
     }
   }

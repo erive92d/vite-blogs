@@ -5,6 +5,7 @@ import auth from '../../utils/auth';
 import ImageUpload from '../ImageUploading/ImageUpload';
 import penguin from "./Avatars/penguin.png"
 import giraffe from "./Avatars/giraffe.jpeg"
+import fox from "./Avatars/fox.jpeg"
 const Signup = () => {
   const [addUser, { data, error }] = useMutation(ADD_USER)
   const [images, setImages] = useState([]);
@@ -60,12 +61,20 @@ const Signup = () => {
 
   };
 
+  const handleAvatar = (e) => {
+    e.preventDefault()
+    // console.log(e.target.src)
+    setInput({ ...input, profilePic: e.target.src })
+  }
+
 
   return (
     <div className="flex flex-col justify-center items-center ">
       <div className='flex'>
-        <img style={{ height: "70px" }} src={giraffe}></img>
-        <img style={{ height: "70px" }} src={penguin}></img>
+        <img onClick={handleAvatar} style={{ height: "70px" }} src={fox}></img>
+
+        <img onClick={handleAvatar} style={{ height: "70px" }} src={giraffe}></img>
+        <img onClick={handleAvatar} style={{ height: "70px" }} src={penguin}></img>
       </div>
       {data ? (
         <p>

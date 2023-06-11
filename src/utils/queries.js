@@ -12,6 +12,7 @@ export const QUERY_USERS = gql`
         content
         createdAt
         postAuthor
+        
       }
     }
   }
@@ -29,6 +30,7 @@ export const QUERY_ME = gql`
         content
         createdAt
         postAuthor
+ 
       }
     }
   }
@@ -46,6 +48,7 @@ export const QUERY_USER = gql`
         content
         createdAt
         postAuthor
+
       }
     }
   }
