@@ -52,20 +52,23 @@ export default function AddComment({ postId }) {
 
     return (
         <div
-            className="max-w-md"
+            className="max-w-md flex my-5"
             id="textarea"
+
         >
 
             <Textarea
                 onChange={handleChange}
+                className="mx-2"
                 id="comment"
                 placeholder="Leave a comment..."
                 required
-                rows={4}
+                rows={2}
             />
             <Button type="submit" onClick={handleSubmit}>
-                Submit comment
+                Comment
             </Button>
+
         </div>
     )
 }

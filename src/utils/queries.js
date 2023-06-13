@@ -16,6 +16,7 @@ export const QUERY_USERS = gql`
         comments {
           commentText
           commentAuthor
+          createdAt
         }
         
       }
@@ -83,6 +84,7 @@ export const QUERY_SINGLE_POST = gql`
       comments {
         commentText
         commentAuthor
+        createdAt
       }
       
     }

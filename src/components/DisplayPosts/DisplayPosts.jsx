@@ -1,7 +1,7 @@
 import { Timeline, Button, Card } from "flowbite-react"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-
+import { capitalize } from "../../utils/helpers/capitalize"
 export default function DisplayPosts({ posts }) {
 
     const [userPosts, setUserPosts] = useState([])
@@ -21,30 +21,31 @@ export default function DisplayPosts({ posts }) {
 
             {userPosts?.map((post) => {
                 return (
-                    <>
+                    <div className="w-full">
+                        <Link to={`/posts/${post._id}`}>
+                            <div class="w-full m-1 rounded overflow-hidden  shadow-lg">
 
-                        <div class="w-full m-2 rounded overflow-hidden  shadow-lg">
+                                <div class="px-6 py-4">
+                                    <div>
+                                        {capitalize(post.postAuthor)}
+                                    </div>
+                                    <div class="font-bold text-xl mb-2">
+                                        {post.title}
 
-                            <div class="px-6 py-4">
-                                <div>
-                                    {post.postAuthor}
+                                    </div>
+
+                                    {post.comments.length} comments
+                                    <div className="text-right font-light text-sm">
+                                        {post.createdAt}
+                                    </div>
+
                                 </div>
-                                <div class="font-bold text-xl mb-2"> <Link to={`/posts/${post._id}`}>
-                                    {post.title}
-                                </Link>
-                                </div>
-                                <div className="text-right  font-light text-sm">
-                                    {post.createdAt}
-                                </div>
-                                {post.comments.length} comments
+
+
 
                             </div>
-
-
-
-                        </div>
-
-                    </>
+                        </Link>
+                    </div>
 
 
                 )

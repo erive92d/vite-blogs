@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client"
 import DisplayPosts from "../components/DisplayPosts/DisplayPosts"
 import { QUERY_POSTS, QUERY_USERS } from "../utils/queries"
-
+import { capitalize } from "../utils/helpers/capitalize"
 
 
 
