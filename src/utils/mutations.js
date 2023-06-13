@@ -51,26 +51,26 @@ export const ADD_POST = gql`
   }
 `;
 
-// export const ADD_COMMENT = gql`
-//   mutation addComment(
-//     $thoughtId: ID!
-//     $commentText: String!
-//     $commentAuthor: String!
-//   ) {
-//     addComment(
-//       thoughtId: $thoughtId
-//       commentText: $commentText
-//       commentAuthor: $commentAuthor
-//     ) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
+export const ADD_COMMENT = gql`
+  mutation addComment(
+    $postId: String!
+    $commentText: String!
+    $commentAuthor: String!
+  ) {
+    addComment(
+      postId: $postId
+      commentText: $commentText
+      commentAuthor: $commentAuthor
+    ) {
+    
+      title
+      postAuthor
+      createdAt
+      comments {
+        commentAuthor
+        commentText
+        createdAt
+      }
+    }
+  }
+`;

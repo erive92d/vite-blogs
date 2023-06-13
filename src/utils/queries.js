@@ -13,6 +13,10 @@ export const QUERY_USERS = gql`
         content
         createdAt
         postAuthor
+        comments {
+          commentText
+          commentAuthor
+        }
         
       }
     }
@@ -45,7 +49,6 @@ export const QUERY_USER = gql`
       email
       profilePic
       posts {
-
         title
         content
         createdAt
@@ -76,7 +79,11 @@ export const QUERY_SINGLE_POST = gql`
       title
       content
       createdAt
-      postAuthor
+      postAuthor  
+      comments {
+        commentText
+        commentAuthor
+      }
       
     }
   }`

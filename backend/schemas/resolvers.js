@@ -69,7 +69,7 @@ const resolvers = {
           { _id: postId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.email },
+              comments: { commentText, commentAuthor },
             },
           },
           {

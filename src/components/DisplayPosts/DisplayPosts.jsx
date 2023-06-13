@@ -1,44 +1,49 @@
 import { Timeline, Button, Card } from "flowbite-react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function DisplayPosts({ posts }) {
-    console.log(posts)
+
+    const [userPosts, setUserPosts] = useState([])
+    useEffect(() => {
+        const sortPosts = () => {
+            let arrayPosts = []
+            posts.map((post) => post.posts.length !== 0 ? arrayPosts.push(post.posts) : null)
+            let actualPosts = [].concat(...arrayPosts)
+            setUserPosts(actualPosts)
+        }
+
+        sortPosts()
+    }, [])
 
     return (
         <div className="container flex mx-auto border items-center flex-wrap">
 
-            {posts.map((post) => {
+            {userPosts?.map((post) => {
                 return (
                     <>
-                        {
-                            post.posts.length !== 0 ?
 
-                                <div class="w-full m-2 rounded overflow-hidden  shadow-lg">
-                                    <div className="p-2">
-                                        <img style={{ height: "50px" }} src={post.profilePic} />
-                                        <h1> {post.name}</h1>
+                        <div class="w-full m-2 rounded overflow-hidden  shadow-lg">
 
-                                    </div>
-
-                                    {post.posts.map((item) => {
-                                        return (
-                                            <div className="my-2">
-                                                <div class="px-6 py-4">
-                                                    <div class="font-bold text-xl mb-2"> <Link to={`/posts/${item._id}`}>
-                                                        {item.title}
-                                                    </Link></div>
-                                                    <p class="text-gray-700 text-base">
-                                                        {item.postAuthor}                            </p>
-                                                </div>
-
-                                            </div>
-                                        )
-                                    })}
-
+                            <div class="px-6 py-4">
+                                <div>
+                                    {post.postAuthor}
                                 </div>
-                                : null
+                                <div class="font-bold text-xl mb-2"> <Link to={`/posts/${post._id}`}>
+                                    {post.title}
+                                </Link>
+                                </div>
+                                <div className="text-right  font-light text-sm">
+                                    {post.createdAt}
+                                </div>
+                                {post.comments.length} comments
 
-                        }
+                            </div>
+
+
+
+                        </div>
+
                     </>
 
 
@@ -48,34 +53,5 @@ export default function DisplayPosts({ posts }) {
 
         </div>
 
-        // <Timeline>
-        //     {posts?.map((post) => {
-        //         return (
-
-        //             <Timeline.Item key={post._id}>
-        //                 <Timeline.Point />
-        //                 <Timeline.Content>
-        //                     <Timeline.Time>
-        //                         {post.createdAt}
-        //                     </Timeline.Time>
-        //                     <Timeline.Title>
-        //                         <Link to={`/posts/${post._id}`}>
-        //                             {post.title}
-        //                         </Link>
-        //                         {post.image ? <img style={{ width: "10em" }} src={post.image} /> : null}
-
-        //                     </Timeline.Title>
-        //                     <Timeline.Body>
-        //                         <p>
-
-        //                             {post.postAuthor || "anonymous"}
-        //                         </p>
-        //                     </Timeline.Body>
-        //                 </Timeline.Content>
-        //             </Timeline.Item>
-
-        //         )
-        //     })}
-        // </Timeline>
     )
 }

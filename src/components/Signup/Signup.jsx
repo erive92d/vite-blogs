@@ -61,9 +61,14 @@ const Signup = () => {
 
   };
 
+
   const handleAvatar = (e) => {
+
     e.preventDefault()
-    // console.log(e.target.src)
+
+
+
+
     setInput({ ...input, profilePic: e.target.src })
   }
 

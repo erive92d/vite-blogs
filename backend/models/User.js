@@ -18,7 +18,6 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    //if a user is part of the wedding party
     //Added posts array
     posts: [
       {
