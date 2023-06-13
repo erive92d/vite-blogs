@@ -20,8 +20,9 @@ const Nav = () => {
     >
       <Navbar.Brand href="/">
 
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Tech Blogs
+        <span className="self-center font-sans whitespace-nowrap text-xl font-semibold dark:text-white">
+          JABS
+          <p className="text-sm font-extralight italic">Just Another Blog Site</p>
         </span>
       </Navbar.Brand>
 
