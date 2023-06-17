@@ -26,6 +26,7 @@ export default function Login() {
             const {data} = await login({
                 variables: {...input}
             })
+            
             auth.login(data.login.token)
             window.location.assign("/")
         } catch (error) {
