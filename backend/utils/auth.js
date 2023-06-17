@@ -6,8 +6,7 @@ require("dotenv").config();
 // const expiration = process.env.JWT_EXP;
 const secret = "mysecretssshhhhhhh";
 const expiration = "2h";
-console.log("....");
-console.log(expiration);
+
 
 module.exports = {
   // function for our authenticated routes
@@ -31,8 +30,8 @@ module.exports = {
     // send to next endpoint
     return req;
   },
-  signToken: function ({ email, _id }) {
-    const payload = { email, _id };
+  signToken: function ({ email, name, _id, profilePic }) {
+    const payload = { email, name, _id, profilePic };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };

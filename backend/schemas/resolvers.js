@@ -8,14 +8,23 @@ const resolvers = {
       // Populate the classes and professor subdocuments when querying for schools
       return User.find({}).populate("posts");
     },
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId }).populate("posts")
+    },
     posts: async () => {
       // Populate the professor subdocument when querying for classes
       return Post.find();
     },
+    post: async (parent, { postId }) => {
+      const postDetail = Post.findOne(
+        {
+          _id: postId
+        }
+      )
+      return postDetail
+    },
     me: async (parent, args, context) => {
-      console.log(context);
       if (context.user) {
-        console.log(context.user);
         return User.findOne({ _id: context.user._id }).populate("posts");
       }
       throw new AuthenticationError("You need to be logged in!");
@@ -23,16 +32,18 @@ const resolvers = {
   },
 
   Mutation: {
+
     addUser: async (parent, { password, name, email, profilePic }) => {
       const user = await User.create({ name, password, email, profilePic });
+
 
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { title, content, image }, context) => {
+    addPost: async (parent, { title, content, image, postAuthor }, context) => {
       if (context.user) {
-        console.log(context.user);
-        const newPost = await Post.create({ title, content, image });
+
+        const newPost = await Post.create({ title, content, image, postAuthor: context.user.name });
         console.log(newPost);
 
         await User.findOneAndUpdate(
@@ -40,7 +51,7 @@ const resolvers = {
           { $addToSet: { posts: newPost._id } }
         );
 
-        return User;
+        return Post;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -58,7 +69,7 @@ const resolvers = {
           { _id: postId },
           {
             $addToSet: {
-              comments: { commentText, commentAuthor: context.user.email },
+              comments: { commentText, commentAuthor },
             },
           },
           {

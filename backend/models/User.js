@@ -18,7 +18,6 @@ const userSchema = new Schema(
       required: true,
       minlength: 5,
     },
-    //if a user is part of the wedding party
     //Added posts array
     posts: [
       {
@@ -30,6 +29,7 @@ const userSchema = new Schema(
       type: String,
       data: Buffer,
       trim: true,
+      default: "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
     },
   },
   // set this to use virtual below

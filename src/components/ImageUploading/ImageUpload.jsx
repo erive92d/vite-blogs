@@ -2,7 +2,7 @@ import ImageUploading from "react-images-uploading";
 import { useState } from "react";
 import React from "react";
 
-export default function ImageUpload({onChange, images}) {
+export default function ImageUpload({ onChange, images }) {
 
   const maxNumber = 69;
 
@@ -15,6 +15,8 @@ export default function ImageUpload({onChange, images}) {
         onChange={onChange}
         maxNumber={maxNumber}
         dataURLKey="data_url"
+        resolutionHeight={100}
+        resolutionWidth={100}
       >
         {({
           imageList,
@@ -26,13 +28,13 @@ export default function ImageUpload({onChange, images}) {
           dragProps,
         }) => (
           // write your building UI
-          <div className="upload__image-wrapper">
+          <div className="border upload__image-wrapper flex flex-col">
             <a
               style={isDragging ? { color: "red" } : undefined}
               onClick={onImageUpload}
               {...dragProps}
             >
-              Click or Drop here
+              Upload Image
             </a>
             &nbsp;
             <button onClick={onImageRemoveAll}>Remove all images</button>

@@ -36,43 +36,41 @@ export const ADD_USER = gql`
   }
 `;
 
-// export const ADD_POST = gql`
-//   mutation addPost($title: String!, $content: String!, $image: String!) {
-//     addPost(title: $title, content: $content, image: $image) {
-//       _id
-//       title
-//       content
-//       image
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//         commentAuthor
-//       }
-//     }
-//   }
-// `;
+export const ADD_POST = gql`
+  mutation addPost($title: String!, $content: String!, $image: String,  $postAuthor: String) {
+    addPost(title: $title, content: $content, image: $image, postAuthor: $postAuthor) {
+      _id
+      title
+      postAuthor
+      content
+      image
+      createdAt
 
-// export const ADD_COMMENT = gql`
-//   mutation addComment(
-//     $thoughtId: ID!
-//     $commentText: String!
-//     $commentAuthor: String!
-//   ) {
-//     addComment(
-//       thoughtId: $thoughtId
-//       commentText: $commentText
-//       commentAuthor: $commentAuthor
-//     ) {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//       comments {
-//         _id
-//         commentText
-//         createdAt
-//       }
-//     }
-//   }
-// `;
+      
+    }
+  }
+`;
+
+export const ADD_COMMENT = gql`
+  mutation addComment(
+    $postId: String!
+    $commentText: String!
+    $commentAuthor: String!
+  ) {
+    addComment(
+      postId: $postId
+      commentText: $commentText
+      commentAuthor: $commentAuthor
+    ) {
+    
+      title
+      postAuthor
+      createdAt
+      comments {
+        commentAuthor
+        commentText
+        createdAt
+      }
+    }
+  }
+`;

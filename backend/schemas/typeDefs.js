@@ -14,10 +14,13 @@ const typeDefs = gql`
     title: String
     content: String
     createdAt: String
+    postAuthor: String
     image: String
     comments: [Comment]
     likes: [Like]
   }
+
+
 
   type Like {
     name: String
@@ -37,8 +40,10 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
+    user(userId: ID!): User
     me: User
     posts: [Post]
+    post(postId: ID!): Post
   }
 
   type Mutation {
@@ -49,9 +54,9 @@ const typeDefs = gql`
       name: String!
       profilePic: String!
     ): Auth
-    addPost(title: String, content: String!, image: String): User
+    addPost(title: String, content: String!, image: String, postAuthor: String): Post
     deletePost(postId: String): Post
-    addComment(postId: String!, commentText: String!): Post
+    addComment(postId: String!, commentText: String!, commentAuthor: String!): Post
     addProfilePic(profileLink: String): User
     addLike(postId: String): Post
   }

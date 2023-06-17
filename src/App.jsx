@@ -13,6 +13,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Profile from './pages/Profile/Profile';
+import SinglePost from './pages/SinglePost';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3001/graphql',
@@ -41,35 +42,34 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <Nav />
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Nav/>
-          <div className="container">
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
-              />
-              <Route 
-                path="/me" 
-                element={<Profile />} 
-              />
-              {/* <Route 
-                path="/posts/:postId" 
-                element={<SinglePost />} 
-              /> */}
-            </Routes>
-          </div>
-        
+        <div>
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+            <Route
+              path="/signup"
+              element={<Signup />}
+            />
+            <Route
+              path="/me"
+              element={<Profile />}
+            />
+            <Route
+              path="/posts/:postId"
+              element={<SinglePost />}
+            />
+          </Routes>
         </div>
+
+
       </Router>
     </ApolloProvider>
   )

@@ -1,20 +1,30 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { QUERY_USERS } from '../../utils/queries'
+import Posts from '../../pages/Posts'
+import CreatePost from '../CreatePost/CreatePost'
+import auth from '../../utils/auth'
+import Sidebar from '../Sidebar/Sidebar'
 
 
 export default function Home() {
 
-  const {data, loading} = useQuery(QUERY_USERS)
+  const { data, loading } = useQuery(QUERY_USERS)
   const users = data?.users || []
 
-  
-  console.log(users)
+
   return (
-    <div>
-        <h1>
-            This is Home page!
-        </h1>
+    <div className='border flex text-lg relative'>
+      {auth.loggedIn() && <div className='border w-1/3 p-2'>
+        <CreatePost />
+
+        <Sidebar />
+      </div>}
+
+
+
+
+      <Posts />
     </div>
   )
 }
