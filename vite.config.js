@@ -9,14 +9,14 @@ export default defineConfig({
     // host: true,
     // port: "8080",
     // hot: true,
-    proxy: {
-      "/graphql": {
-        target: "http://localhost:3001",
-        changeOrigin: true,
-        secure: false,
-        ws: true,
-      },
-    },
+    // proxy: {
+    //   "/graphql": {
+    //     target: "http://localhost:3001",
+    //     changeOrigin: true,
+    //     secure: false,
+    //     ws: true,
+    //   },
+    // },
   },
   // build: {
   //   outDir: "dist",
