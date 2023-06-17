@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "http://127.0.0.1:3001/graphql"
+      "destination": "http://127.0.0.1:3001/"
     }
   ]
 }
