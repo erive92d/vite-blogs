@@ -3,10 +3,6 @@
     {
       "source": "/(.*)",
       "destination": "/dist/index.html"
-    },
-    {
-      "source": "/graphql/(.*)",
-      "destination": "http://127.0.0.1:3001/"
     }
   ]
 }
