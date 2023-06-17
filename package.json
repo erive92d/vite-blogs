@@ -3,8 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "http://localhost:3000",
   "scripts": {
-    "client": "vite ",
+    "client": "vite --host",
     "dev": "concurrently \"npm run server --max-http-header-size=64555\" \"npm run client\"",
     "server": "node backend/server.js",
     "build": "vite build",
